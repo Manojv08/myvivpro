@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Market Place Sanity" verbose="10">
+  <test thread-count="2" name="Sanity testing" preserve-order="true"  enabled="true">
+    <classes>
+      <class name="tests.sampletestTL"/>
+      <class name="tests.sampletestPTC"/>
+      <class name="tests.sampletestDA"/>
+      <class name="tests.ForgotPassword"/>
+      <class name="tests.OTPTesting"/>
+      <class name="tests.FileDownloadTest"/>
+      <class name="tests.BrokenLinksInInvestor"/>
+      <class name="tests.BrokenLinksInClient"/>
+      <class name="tests.MarketPlaceIE11Test"/>
+      <class name="tests.ClientSignUpIE11Test"/>
+    </classes>
+  </test> <!-- Sanity testing -->
+</suite> <!-- Market Place Sanity -->
