@@ -1,0 +1,2329 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<meta charset='utf-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta id="timeStampFormat" name="timeStampFormat" content='MMM d, yyyy hh:mm:ss a'/>
+	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css' />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports-java/b4a58fcfd1e137bd9287244035a7c80d3d73b3af/dist/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title>Mp Automation</title>
+
+	<style type='text/css'>
+	</style>
+</head>
+
+	<body class='extent dark default hide-overflow '>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo blue darken-3">Extent</a>
+
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+						<li class='waves-effect'><a href='#!' view='category-view' onclick="configureView(1)"><i class='material-icons'>label_outline</i></a></li>
+				<li class='waves-effect'><a href='#!' view='author-view' onclick="configureView(3)"><i class='material-icons'>person</i></a></li>
+			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+		</ul>
+
+		<!-- report name -->
+		<span class='report-name'>Mp Automation Report</span>
+		
+		<!-- report headline -->
+		<span class='report-headline'></span>
+
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<li>
+                <a href='#!'>
+                    <span class='label suite-start-time blue darken-3'>Feb 13, 2019 03:33:57 PM</span>
+				</a>
+			</li>
+			<li>
+                <a href='#!'>
+                    <span class='label blue darken-3'>3.1.5</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+		<!-- container -->
+		<div class='container'>
+
+<div id='test-view' class='view'>
+				
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+
+			<!-- category toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button category-toggle' data-activates='category-toggle' data-constrainwidth='false' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>local_offer</i> Category
+				</a>
+				<ul id='category-toggle' class='dropdown-content'>
+					<li><a href='#'>Sanity</a></li>
+					<li class='divider'></li>
+					<li class='clear'><a href='#!' clear='true'>Clear Filters</a></li>
+				</ul>
+			</div>
+			<!-- category toggle -->
+
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+					<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+					<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+
+<div id='test-view-charts' class='subview-full'>
+	<div id='charts-row' class='row nm-v nm-h'>
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Tests</div>
+				<div class='chart-box'>
+					<canvas id='parent-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>10</span> test(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+				</div>
+			</div>
+		</div>
+		
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Steps</div>
+				<div class='chart-box'>
+					<canvas id='child-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>282</span> step(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Tests</h5>
+			<ul id='test-collection' class='test-collection'>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>Term Loan</span>
+						<span class='test-time'>Feb 13, 2019 03:33:58 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 13, 2019 03:33:58 PM</span>
+	<span class='label end-time'>Feb 13, 2019 03:33:58 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>TL Transaction Initiation </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Sanity</span>
+			</div>
+			<div class='author-list'>
+				<span class='author label white-text'>Manoj</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:09 PM</td>
+					<td class='step-details'>The Browser chrome Launched Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:10 PM</td>
+					<td class='step-details'>The data laxmi@vivriticapital.com is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:11 PM</td>
+					<td class='step-details'>The data Test@123 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:11 PM</td>
+					<td class='step-details'>The Element LOGIN Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:19 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:19 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:20 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:20 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:21 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:21 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:21 PM</td>
+					<td class='step-details'>The Element VERIFY Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:26 PM</td>
+					<td class='step-details'>The Element INITIATE TRANSACTION Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:27 PM</td>
+					<td class='step-details'>The Element Term Loan
+TLs are lines of credit given by a bank or a financial institution to a borrower for a specific amount bearing fixed or floating interest rate payments. Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:27 PM</td>
+					<td class='step-details'>The data 16.26 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:28 PM</td>
+					<td class='step-details'>The data Micro Finance (MFI) is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:29 PM</td>
+					<td class='step-details'>The data 2 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:29 PM</td>
+					<td class='step-details'>The data 8 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:30 PM</td>
+					<td class='step-details'>The data 23 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:30 PM</td>
+					<td class='step-details'>The data 4 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:31 PM</td>
+					<td class='step-details'>The data 30-Jan-2019 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:31 PM</td>
+					<td class='step-details'>The Element YES Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:32 PM</td>
+					<td class='step-details'>The data 5.23 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:32 PM</td>
+					<td class='step-details'>The data 2 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:33 PM</td>
+					<td class='step-details'>The data Quarterly is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:33 PM</td>
+					<td class='step-details'>The data Half Yearly is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:34 PM</td>
+					<td class='step-details'>The data Equated Instalment is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:34 PM</td>
+					<td class='step-details'>The Element YES Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:35 PM</td>
+					<td class='step-details'>The data 3 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:35 PM</td>
+					<td class='step-details'>The Element CORPORATE GUARANTEE Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:36 PM</td>
+					<td class='step-details'>The Element PROCEED Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:37 PM</td>
+					<td class='step-details'>Retrieved text is: Laxmi TL 02 2019.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:37 PM</td>
+					<td class='step-details'>Deal name for the created Term Loan transaction is Laxmi TL 02 2019 with transaction id: https://mp-staging.vivriti.in/client/initiate/tl/5c63ebb4e1264640510fb562/success</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:37 PM</td>
+					<td class='step-details'>The Element DONE Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:40 PM</td>
+					<td class='step-details'>The Element  Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:41 PM</td>
+					<td class='step-details'>The Element Logout Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:44 PM</td>
+					<td class='step-details'>The browser is closed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
+					<div class='test-heading'>
+						<span class='test-name'>Pass Through Certificates</span>
+						<span class='test-time'>Feb 13, 2019 03:34:44 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 13, 2019 03:34:44 PM</span>
+	<span class='label end-time'>Feb 13, 2019 03:34:44 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>PTC Transaction Initiation </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Sanity</span>
+			</div>
+			<div class='author-list'>
+				<span class='author label white-text'>Manoj</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:52 PM</td>
+					<td class='step-details'>The Browser chrome Launched Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:53 PM</td>
+					<td class='step-details'>The data laxmi@vivriticapital.com is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:53 PM</td>
+					<td class='step-details'>The data Test@123 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:34:54 PM</td>
+					<td class='step-details'>The Element LOGIN Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:01 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:02 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:02 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:02 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:03 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:03 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:04 PM</td>
+					<td class='step-details'>The Element VERIFY Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:08 PM</td>
+					<td class='step-details'>The Element INITIATE TRANSACTION Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:09 PM</td>
+					<td class='step-details'>The Element Pass-Through Certificate
+Pass Through Certificates are asset backed securities where the underlying cashflows of the asset are used to service the debt. Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:09 PM</td>
+					<td class='step-details'>The data Micro Finance (MFI) is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:10 PM</td>
+					<td class='step-details'>The data D:\PTC\Automation\MCD.xlsx is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:10 PM</td>
+					<td class='step-details'>The data D:\PTC\Automation\RS.xlsx is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:14 PM</td>
+					<td class='step-details'>The Element PROCEED Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:16 PM</td>
+					<td class='step-details'>The data 31-Dec-2018 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:16 PM</td>
+					<td class='step-details'>The data 10.25 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:17 PM</td>
+					<td class='step-details'>The data Cash Collateral is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:18 PM</td>
+					<td class='step-details'>The data 29-Jan-2019 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:18 PM</td>
+					<td class='step-details'>The data Pricing is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:19 PM</td>
+					<td class='step-details'>The data Settlement Date is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:19 PM</td>
+					<td class='step-details'>The data Preferred Investor is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:20 PM</td>
+					<td class='step-details'>The Element PROCEED Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:22 PM</td>
+					<td class='step-details'>Retrieved text is: Vivriti Jason 02 2019.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:22 PM</td>
+					<td class='step-details'>Deal name for the created Term Loan transaction is Vivriti Jason 02 2019 with transaction id: https://mp-staging.vivriti.in/client/initiate/ptc/5c63ebdbe12646404d6ea1aa/success</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:22 PM</td>
+					<td class='step-details'>The Element DONE Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:23 PM</td>
+					<td class='step-details'>The Element  Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:24 PM</td>
+					<td class='step-details'>The Element Logout Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:26 PM</td>
+					<td class='step-details'>The browser is closed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='3'>
+					<div class='test-heading'>
+						<span class='test-name'>Direct Assignment</span>
+						<span class='test-time'>Feb 13, 2019 03:35:27 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 13, 2019 03:35:27 PM</span>
+	<span class='label end-time'>Feb 13, 2019 03:35:27 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>DA Transaction Initiation </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Sanity</span>
+			</div>
+			<div class='author-list'>
+				<span class='author label white-text'>Manoj</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:34 PM</td>
+					<td class='step-details'>The Browser chrome Launched Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:35 PM</td>
+					<td class='step-details'>The data sonata@vivriticapital.com is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:36 PM</td>
+					<td class='step-details'>The data Test@123 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:36 PM</td>
+					<td class='step-details'>The Element LOGIN Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:46 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:46 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:46 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:47 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:47 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:48 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:48 PM</td>
+					<td class='step-details'>The Element VERIFY Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:52 PM</td>
+					<td class='step-details'>The Element INITIATE TRANSACTION Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:53 PM</td>
+					<td class='step-details'>The Element Direct Assignment
+DAs are outright purchase of underlying pool by the lender for a purchase consideration. Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:57 PM</td>
+					<td class='step-details'>The data Micro Finance is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:57 PM</td>
+					<td class='step-details'>The data 10.05 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:58 PM</td>
+					<td class='step-details'>The data 01-Feb-2019 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:35:59 PM</td>
+					<td class='step-details'>The data 8.12 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:36:10 PM</td>
+					<td class='step-details'>The data Vivriti Capital Private Limited is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:36:20 PM</td>
+					<td class='step-details'>The data ICRA Limited is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:36:31 PM</td>
+					<td class='step-details'>The data Wadia Law Services is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:36:41 PM</td>
+					<td class='step-details'>The data Sandeepan Audit is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:36:42 PM</td>
+					<td class='step-details'>The data Pricing is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:36:42 PM</td>
+					<td class='step-details'>The data Settlement Date is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:36:43 PM</td>
+					<td class='step-details'>The data Preferred Investor is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:36:43 PM</td>
+					<td class='step-details'>The Element PROCEED Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:36:44 PM</td>
+					<td class='step-details'>The data D:\DA\Automation\MCD.xlsx is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:36:51 PM</td>
+					<td class='step-details'>The Element PROCEED Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:36:55 PM</td>
+					<td class='step-details'>The data D:\DA\Automation\RS.xlsx is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:36:55 PM</td>
+					<td class='step-details'>The Element PROCEED Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:36:56 PM</td>
+					<td class='step-details'>Retrieved text is: Vivriti Josh 02 2019.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:36:56 PM</td>
+					<td class='step-details'>Deal name for the created Term Loan transaction is Vivriti Josh 02 2019 with transaction id: https://mp-staging.vivriti.in/client/initiate/da/5c63ec34e1264640510fb576/success</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:36:56 PM</td>
+					<td class='step-details'>The Element DONE Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:36:56 PM</td>
+					<td class='step-details'>The Element  Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:36:57 PM</td>
+					<td class='step-details'>The Element Logout Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:36:59 PM</td>
+					<td class='step-details'>The browser is closed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='4'>
+					<div class='test-heading'>
+						<span class='test-name'>Forgot Password</span>
+						<span class='test-time'>Feb 13, 2019 03:36:59 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 13, 2019 03:36:59 PM</span>
+	<span class='label end-time'>Feb 13, 2019 03:36:59 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>Reset password flow </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Sanity</span>
+			</div>
+			<div class='author-list'>
+				<span class='author label white-text'>Manoj</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:37:06 PM</td>
+					<td class='step-details'>The Browser chrome Launched Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:37:07 PM</td>
+					<td class='step-details'>The Element Forgot Password? Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:37:07 PM</td>
+					<td class='step-details'>The data vistra@vivriticapital.com is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:37:08 PM</td>
+					<td class='step-details'>The Element SUBMIT Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:37:11 PM</td>
+					<td class='step-details'>Retrieved text is: Reset Password!
+Password reset link has been sent to your email..</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:37:32 PM</td>
+					<td class='step-details'>The data vivriti_sandbox is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:37:37 PM</td>
+					<td class='step-details'>The Element  Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:37:37 PM</td>
+					<td class='step-details'>switched in to the Frame by webelement [[ChromeDriver: chrome on XP (dcdd107405722dafea91aaeefde2c473)] -> id: ifmail]</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:37:37 PM</td>
+					<td class='step-details'>The Element Reset your password Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:37:38 PM</td>
+					<td class='step-details'>switched out of all the Frames and returned back to the main content</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:37:39 PM</td>
+					<td class='step-details'>The data Think@123 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:37:39 PM</td>
+					<td class='step-details'>The data Think@123 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:37:40 PM</td>
+					<td class='step-details'>The Element CHANGE Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:37:44 PM</td>
+					<td class='step-details'>The data vistra@vivriticapital.com is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:37:45 PM</td>
+					<td class='step-details'>The data Think@123 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:37:45 PM</td>
+					<td class='step-details'>The Element LOGIN Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:37:52 PM</td>
+					<td class='step-details'>The Element  Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:37:52 PM</td>
+					<td class='step-details'>The Element Logout Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:37:54 PM</td>
+					<td class='step-details'>All opened browsers are closed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='5'>
+					<div class='test-heading'>
+						<span class='test-name'>MFA OTP testing</span>
+						<span class='test-time'>Feb 13, 2019 03:37:54 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 13, 2019 03:37:54 PM</span>
+	<span class='label end-time'>Feb 13, 2019 03:37:54 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>Authorization from Sandbox OTP </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Sanity</span>
+			</div>
+			<div class='author-list'>
+				<span class='author label white-text'>Manoj</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:00 PM</td>
+					<td class='step-details'>The Browser chrome Launched Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:01 PM</td>
+					<td class='step-details'>The data product_admin@vivriticapital.com is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:01 PM</td>
+					<td class='step-details'>The data Think@123 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:02 PM</td>
+					<td class='step-details'>The Element LOGIN Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:27 PM</td>
+					<td class='step-details'>The data vivriti_sandbox is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:31 PM</td>
+					<td class='step-details'>The Element  Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:31 PM</td>
+					<td class='step-details'>switched in to the Frame by webelement [[ChromeDriver: chrome on XP (42b8697b100c285ec6c5d286c8b7bf19)] -> id: ifmail]</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:31 PM</td>
+					<td class='step-details'>Retrieved text is: 035056.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:31 PM</td>
+					<td class='step-details'>switched out of all the Frames and returned back to the main content</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:32 PM</td>
+					<td class='step-details'>The data 035056 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:32 PM</td>
+					<td class='step-details'>The Element VERIFY Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:36 PM</td>
+					<td class='step-details'>The Element  Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:37 PM</td>
+					<td class='step-details'>The Element Logout Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:38 PM</td>
+					<td class='step-details'>All opened browsers are closed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='6'>
+					<div class='test-heading'>
+						<span class='test-name'>File Download Testing</span>
+						<span class='test-time'>Feb 13, 2019 03:38:38 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 13, 2019 03:38:38 PM</span>
+	<span class='label end-time'>Feb 13, 2019 03:38:38 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>Testing of a document download from Client login </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Sanity</span>
+			</div>
+			<div class='author-list'>
+				<span class='author label white-text'>Manoj</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:45 PM</td>
+					<td class='step-details'>The Browser chrome Launched Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:45 PM</td>
+					<td class='step-details'>The data laxmi@vivriticapital.com is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:46 PM</td>
+					<td class='step-details'>The data Test@123 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:46 PM</td>
+					<td class='step-details'>The Element LOGIN Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:53 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:54 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:54 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:54 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:55 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:55 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:38:55 PM</td>
+					<td class='step-details'>The Element VERIFY Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:00 PM</td>
+					<td class='step-details'>The Element SETTLED DEALS Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:02 PM</td>
+					<td class='step-details'>The Element L Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:04 PM</td>
+					<td class='step-details'>The Element INVESTOR Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:06 PM</td>
+					<td class='step-details'>https://mp-api-staging.vivriti.in/transaction_task_documents/5c35bc90a8f8945ebe87db2d/download?access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5rVkJNVEl6TkVaRFEwTTRRMEpEUkRaRU5FRTNRMEUzUmpReE5VVTJPRU01T1RaR09EazVOQSJ9.eyJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9yb2xlcyI6WyJhZG1pbiJdLCJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9ncm91cHMiOlsiY3VzdG9tZXIiXSwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vZW50aXR5X2lkIjoiNWMzNDRjMWFhOGY4OTQ1ZWJlODdkOTY5IiwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vbG9jYWxfdXNlcl9pZCI6IjVjMzQ0ZDE2YThmODk0NWViZTg3ZDk2ZCIsImlzcyI6Imh0dHBzOi8vdml2cml0aS1tYXJrZXRwbGFjZS1zdGFnaW5nLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1YzM0NGQxOGVjZWJlNzU2MTc4ZTM4YzkiLCJhdWQiOlsiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4iLCJodHRwczovL3ZpdnJpdGktbWFya2V0cGxhY2Utc3RhZ2luZy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTUwMDUyNTI4LCJleHAiOjE1NTAwNTk3MjgsImF6cCI6InRtTmljNmU1YzI5ODFKQ25kRWRvSlJiZDd0WTRCQmhGIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCJ9.IWUPJqzJc47Cvk-l2bY5oRyfgzth5C46pcwqWgi0DCfaL8VTwzMu0kYq1MoE0Ky__ou-T-8dz45YsZdWhpXLNqNbGKAB7cbpqyVUMdE-xppDInrbbgMx69U5Zvcv51L2AX13dJbjyHNle3qx35wZgQaBsm1E2hFmEkA4RykTppX2UBt3Y22xbLCqlL7m_qWmQ24JxCD6HRLu0G_b5l7l6BCGDe2GlJAYGXry4dLhyMYwHvGPLZUu9P9SHEzmQx8P82XpLCjdBdROuoeG6RGJzPsHlw5IWcUAGSi4Ri4hrGcl3BEGqJaWlAVGX1fRGO2eOPDDKXPwRrnjeipVkryH3A&mfa_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNWMzNDRkMTZhOGY4OTQ1ZWJlODdkOTZkIiwiZXhwIjoxNTUyNDcxNzM4fQ.RqJiahEzySzZ863LBdXJYPrpob3byKAxCthNVE62yJQ - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:06 PM</td>
+					<td class='step-details'>The Element  Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:07 PM</td>
+					<td class='step-details'>The Element Logout Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:07 PM</td>
+					<td class='step-details'>The browser is closed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='7'>
+					<div class='test-heading'>
+						<span class='test-name'>Investor Transaction page</span>
+						<span class='test-time'>Feb 13, 2019 03:39:07 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 13, 2019 03:39:07 PM</span>
+	<span class='label end-time'>Feb 13, 2019 03:39:07 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>Check for any Broken links in the page </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Sanity</span>
+			</div>
+			<div class='author-list'>
+				<span class='author label white-text'>Manoj</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:14 PM</td>
+					<td class='step-details'>The Browser chrome Launched Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:14 PM</td>
+					<td class='step-details'>The data dcb@vivriticapital.com is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:15 PM</td>
+					<td class='step-details'>The data Test@123 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:15 PM</td>
+					<td class='step-details'>The Element LOGIN Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:22 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:23 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:23 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:23 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:24 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:24 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:25 PM</td>
+					<td class='step-details'>The Element VERIFY Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:28 PM</td>
+					<td class='step-details'>The Element LIVE DEALS Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:31 PM</td>
+					<td class='step-details'>The Element S
+Sonata Finance Limited
+Vivriti Fanie 02 2019Created On: 13 Feb, 2019 Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:32 PM</td>
+					<td class='step-details'>No.of.links in this page is: 15.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:32 PM</td>
+					<td class='step-details'>unknown protocol: javascript</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:32 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/ - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:33 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/investor/transactions - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:33 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/investor - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:33 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/investor/transactions - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:33 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/investor/ptc/5c63a6b6e1264640510fb540 - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:34 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/investor/ptc/5c63a6b6e1264640510fb540#pending-tasks - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:34 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/investor/ptc/5c63a6b6e1264640510fb540/task/funding - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:34 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/investor/ptc/5c63a6b6e1264640510fb540/task/application-form - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:34 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/investor/ptc/5c63a6b6e1264640510fb540/task-status - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:35 PM</td>
+					<td class='step-details'>https://www.vivriticapital.com/terms-conditions.html - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:35 PM</td>
+					<td class='step-details'>sun.net.www.protocol.mailto.MailToURLConnection cannot be cast to java.net.HttpURLConnection</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:35 PM</td>
+					<td class='step-details'>sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:35 PM</td>
+					<td class='step-details'>https://twitter.com/VivritiCapital - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:36 PM</td>
+					<td class='step-details'>The Element  Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:37 PM</td>
+					<td class='step-details'>The Element Logout Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:37 PM</td>
+					<td class='step-details'>The browser is closed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='8'>
+					<div class='test-heading'>
+						<span class='test-name'>Client Transaction page</span>
+						<span class='test-time'>Feb 13, 2019 03:39:37 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 13, 2019 03:39:37 PM</span>
+	<span class='label end-time'>Feb 13, 2019 03:39:37 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>Check for any Broken links in the page </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Sanity</span>
+			</div>
+			<div class='author-list'>
+				<span class='author label white-text'>Manoj</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:44 PM</td>
+					<td class='step-details'>The Browser chrome Launched Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:44 PM</td>
+					<td class='step-details'>The data laxmi@vivriticapital.com is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:45 PM</td>
+					<td class='step-details'>The data Test@123 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:45 PM</td>
+					<td class='step-details'>The Element LOGIN Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:53 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:53 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:53 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:54 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:54 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:55 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:55 PM</td>
+					<td class='step-details'>The Element VERIFY Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:39:59 PM</td>
+					<td class='step-details'>The Element SETTLED DEALS Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:02 PM</td>
+					<td class='step-details'>The Element L Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:03 PM</td>
+					<td class='step-details'>The Element INVESTOR Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:04 PM</td>
+					<td class='step-details'>No.of.links in this page is: 33.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:04 PM</td>
+					<td class='step-details'>unknown protocol: javascript</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:04 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/ - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:04 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/client/transactions - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:05 PM</td>
+					<td class='step-details'>https://cra-staging.vivriti.in/client/document/kyc - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:05 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/client/initiate - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:05 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/client/home - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:06 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/client/transactions - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:06 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/client/cp/5c35b9cca8f8945ebe87dab0 - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:06 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/client/cp/5c35b9cca8f8945ebe87dab0#pending-tasks - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:06 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/client/cp/5c35b9cca8f8945ebe87dab0/task/bank-account-details - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:07 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/client/cp/5c35b9cca8f8945ebe87dab0/task/rating-letter - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:07 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/client/cp/5c35b9cca8f8945ebe87dab0/task/signed-termsheet - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:07 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/client/cp/5c35b9cca8f8945ebe87dab0/task/isin - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:07 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/client/cp/5c35b9cca8f8945ebe87dab0/task/signed-dcn - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:08 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/client/cp/5c35b9cca8f8945ebe87dab0/task/ipa-certificate - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:08 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/client/cp/5c35b9cca8f8945ebe87dab0/task/executed-documents - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:08 PM</td>
+					<td class='step-details'>https://mp-staging.vivriti.in/client/cp/5c35b9cca8f8945ebe87dab0/task-status - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:09 PM</td>
+					<td class='step-details'>https://mp-api-staging.vivriti.in/transaction_task_documents/5c35bc90a8f8945ebe87db2d/download?access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5rVkJNVEl6TkVaRFEwTTRRMEpEUkRaRU5FRTNRMEUzUmpReE5VVTJPRU01T1RaR09EazVOQSJ9.eyJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9yb2xlcyI6WyJhZG1pbiJdLCJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9ncm91cHMiOlsiY3VzdG9tZXIiXSwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vZW50aXR5X2lkIjoiNWMzNDRjMWFhOGY4OTQ1ZWJlODdkOTY5IiwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vbG9jYWxfdXNlcl9pZCI6IjVjMzQ0ZDE2YThmODk0NWViZTg3ZDk2ZCIsImlzcyI6Imh0dHBzOi8vdml2cml0aS1tYXJrZXRwbGFjZS1zdGFnaW5nLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1YzM0NGQxOGVjZWJlNzU2MTc4ZTM4YzkiLCJhdWQiOlsiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4iLCJodHRwczovL3ZpdnJpdGktbWFya2V0cGxhY2Utc3RhZ2luZy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTUwMDUyNTg4LCJleHAiOjE1NTAwNTk3ODgsImF6cCI6InRtTmljNmU1YzI5ODFKQ25kRWRvSlJiZDd0WTRCQmhGIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCJ9.I89sqwO4MYd6ACllFbMfdvK38QGMgBnDXVd6EAmW-bgtclFBc0ZZISlMs3ksYrM16e2jHfDqy2rEk16Kb_z2ESAtf4aDb_cIIbgDrXgXSYEGvWXXgISUwHC8Mm01OIAYiDk56PpsriRU-Q_ThkCXyholLMWw0fhD0S9Lc_HJmy3YqDEgat9GRksE58ZMnIixh9ryX27CAPvzVOSbkb4Y5wXSXeX_0c-4HIbKMMF_K0veSMKpOrnHig6nXasMWe6bTYQDPHxM_T6boMr2gY-J9ZGHt25RwvZmc_kZrf8SRZYcIeHAkPuo6T69B-wSds9IiaA5FNrknZ8ug5A82tUp8g&mfa_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNWMzNDRkMTZhOGY4OTQ1ZWJlODdkOTZkIiwiZXhwIjoxNTUyNDcxNzk4fQ.1lDGeK04uQs2jSMmuBNEkq-7uVnKBpY5eJUnskLyZO0 - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:11 PM</td>
+					<td class='step-details'>https://mp-api-staging.vivriti.in/transaction_task_documents/5c35bd12a8f8945ebe87db50/download?access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5rVkJNVEl6TkVaRFEwTTRRMEpEUkRaRU5FRTNRMEUzUmpReE5VVTJPRU01T1RaR09EazVOQSJ9.eyJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9yb2xlcyI6WyJhZG1pbiJdLCJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9ncm91cHMiOlsiY3VzdG9tZXIiXSwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vZW50aXR5X2lkIjoiNWMzNDRjMWFhOGY4OTQ1ZWJlODdkOTY5IiwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vbG9jYWxfdXNlcl9pZCI6IjVjMzQ0ZDE2YThmODk0NWViZTg3ZDk2ZCIsImlzcyI6Imh0dHBzOi8vdml2cml0aS1tYXJrZXRwbGFjZS1zdGFnaW5nLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1YzM0NGQxOGVjZWJlNzU2MTc4ZTM4YzkiLCJhdWQiOlsiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4iLCJodHRwczovL3ZpdnJpdGktbWFya2V0cGxhY2Utc3RhZ2luZy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTUwMDUyNTg4LCJleHAiOjE1NTAwNTk3ODgsImF6cCI6InRtTmljNmU1YzI5ODFKQ25kRWRvSlJiZDd0WTRCQmhGIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCJ9.I89sqwO4MYd6ACllFbMfdvK38QGMgBnDXVd6EAmW-bgtclFBc0ZZISlMs3ksYrM16e2jHfDqy2rEk16Kb_z2ESAtf4aDb_cIIbgDrXgXSYEGvWXXgISUwHC8Mm01OIAYiDk56PpsriRU-Q_ThkCXyholLMWw0fhD0S9Lc_HJmy3YqDEgat9GRksE58ZMnIixh9ryX27CAPvzVOSbkb4Y5wXSXeX_0c-4HIbKMMF_K0veSMKpOrnHig6nXasMWe6bTYQDPHxM_T6boMr2gY-J9ZGHt25RwvZmc_kZrf8SRZYcIeHAkPuo6T69B-wSds9IiaA5FNrknZ8ug5A82tUp8g&mfa_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNWMzNDRkMTZhOGY4OTQ1ZWJlODdkOTZkIiwiZXhwIjoxNTUyNDcxNzk4fQ.1lDGeK04uQs2jSMmuBNEkq-7uVnKBpY5eJUnskLyZO0 - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:12 PM</td>
+					<td class='step-details'>https://mp-api-staging.vivriti.in/transaction_task_documents/5c35bca9a8f8945ebe87db31/download?access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5rVkJNVEl6TkVaRFEwTTRRMEpEUkRaRU5FRTNRMEUzUmpReE5VVTJPRU01T1RaR09EazVOQSJ9.eyJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9yb2xlcyI6WyJhZG1pbiJdLCJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9ncm91cHMiOlsiY3VzdG9tZXIiXSwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vZW50aXR5X2lkIjoiNWMzNDRjMWFhOGY4OTQ1ZWJlODdkOTY5IiwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vbG9jYWxfdXNlcl9pZCI6IjVjMzQ0ZDE2YThmODk0NWViZTg3ZDk2ZCIsImlzcyI6Imh0dHBzOi8vdml2cml0aS1tYXJrZXRwbGFjZS1zdGFnaW5nLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1YzM0NGQxOGVjZWJlNzU2MTc4ZTM4YzkiLCJhdWQiOlsiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4iLCJodHRwczovL3ZpdnJpdGktbWFya2V0cGxhY2Utc3RhZ2luZy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTUwMDUyNTg4LCJleHAiOjE1NTAwNTk3ODgsImF6cCI6InRtTmljNmU1YzI5ODFKQ25kRWRvSlJiZDd0WTRCQmhGIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCJ9.I89sqwO4MYd6ACllFbMfdvK38QGMgBnDXVd6EAmW-bgtclFBc0ZZISlMs3ksYrM16e2jHfDqy2rEk16Kb_z2ESAtf4aDb_cIIbgDrXgXSYEGvWXXgISUwHC8Mm01OIAYiDk56PpsriRU-Q_ThkCXyholLMWw0fhD0S9Lc_HJmy3YqDEgat9GRksE58ZMnIixh9ryX27CAPvzVOSbkb4Y5wXSXeX_0c-4HIbKMMF_K0veSMKpOrnHig6nXasMWe6bTYQDPHxM_T6boMr2gY-J9ZGHt25RwvZmc_kZrf8SRZYcIeHAkPuo6T69B-wSds9IiaA5FNrknZ8ug5A82tUp8g&mfa_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNWMzNDRkMTZhOGY4OTQ1ZWJlODdkOTZkIiwiZXhwIjoxNTUyNDcxNzk4fQ.1lDGeK04uQs2jSMmuBNEkq-7uVnKBpY5eJUnskLyZO0 - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:13 PM</td>
+					<td class='step-details'>https://mp-api-staging.vivriti.in/transaction_task_documents/5c35bcb0a8f8945ebe87db34/download?access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5rVkJNVEl6TkVaRFEwTTRRMEpEUkRaRU5FRTNRMEUzUmpReE5VVTJPRU01T1RaR09EazVOQSJ9.eyJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9yb2xlcyI6WyJhZG1pbiJdLCJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9ncm91cHMiOlsiY3VzdG9tZXIiXSwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vZW50aXR5X2lkIjoiNWMzNDRjMWFhOGY4OTQ1ZWJlODdkOTY5IiwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vbG9jYWxfdXNlcl9pZCI6IjVjMzQ0ZDE2YThmODk0NWViZTg3ZDk2ZCIsImlzcyI6Imh0dHBzOi8vdml2cml0aS1tYXJrZXRwbGFjZS1zdGFnaW5nLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1YzM0NGQxOGVjZWJlNzU2MTc4ZTM4YzkiLCJhdWQiOlsiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4iLCJodHRwczovL3ZpdnJpdGktbWFya2V0cGxhY2Utc3RhZ2luZy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTUwMDUyNTg4LCJleHAiOjE1NTAwNTk3ODgsImF6cCI6InRtTmljNmU1YzI5ODFKQ25kRWRvSlJiZDd0WTRCQmhGIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCJ9.I89sqwO4MYd6ACllFbMfdvK38QGMgBnDXVd6EAmW-bgtclFBc0ZZISlMs3ksYrM16e2jHfDqy2rEk16Kb_z2ESAtf4aDb_cIIbgDrXgXSYEGvWXXgISUwHC8Mm01OIAYiDk56PpsriRU-Q_ThkCXyholLMWw0fhD0S9Lc_HJmy3YqDEgat9GRksE58ZMnIixh9ryX27CAPvzVOSbkb4Y5wXSXeX_0c-4HIbKMMF_K0veSMKpOrnHig6nXasMWe6bTYQDPHxM_T6boMr2gY-J9ZGHt25RwvZmc_kZrf8SRZYcIeHAkPuo6T69B-wSds9IiaA5FNrknZ8ug5A82tUp8g&mfa_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNWMzNDRkMTZhOGY4OTQ1ZWJlODdkOTZkIiwiZXhwIjoxNTUyNDcxNzk4fQ.1lDGeK04uQs2jSMmuBNEkq-7uVnKBpY5eJUnskLyZO0 - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:15 PM</td>
+					<td class='step-details'>https://mp-api-staging.vivriti.in/transaction_task_documents/5c35bcb9a8f8945ebe87db37/download?access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5rVkJNVEl6TkVaRFEwTTRRMEpEUkRaRU5FRTNRMEUzUmpReE5VVTJPRU01T1RaR09EazVOQSJ9.eyJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9yb2xlcyI6WyJhZG1pbiJdLCJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9ncm91cHMiOlsiY3VzdG9tZXIiXSwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vZW50aXR5X2lkIjoiNWMzNDRjMWFhOGY4OTQ1ZWJlODdkOTY5IiwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vbG9jYWxfdXNlcl9pZCI6IjVjMzQ0ZDE2YThmODk0NWViZTg3ZDk2ZCIsImlzcyI6Imh0dHBzOi8vdml2cml0aS1tYXJrZXRwbGFjZS1zdGFnaW5nLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1YzM0NGQxOGVjZWJlNzU2MTc4ZTM4YzkiLCJhdWQiOlsiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4iLCJodHRwczovL3ZpdnJpdGktbWFya2V0cGxhY2Utc3RhZ2luZy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTUwMDUyNTg4LCJleHAiOjE1NTAwNTk3ODgsImF6cCI6InRtTmljNmU1YzI5ODFKQ25kRWRvSlJiZDd0WTRCQmhGIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCJ9.I89sqwO4MYd6ACllFbMfdvK38QGMgBnDXVd6EAmW-bgtclFBc0ZZISlMs3ksYrM16e2jHfDqy2rEk16Kb_z2ESAtf4aDb_cIIbgDrXgXSYEGvWXXgISUwHC8Mm01OIAYiDk56PpsriRU-Q_ThkCXyholLMWw0fhD0S9Lc_HJmy3YqDEgat9GRksE58ZMnIixh9ryX27CAPvzVOSbkb4Y5wXSXeX_0c-4HIbKMMF_K0veSMKpOrnHig6nXasMWe6bTYQDPHxM_T6boMr2gY-J9ZGHt25RwvZmc_kZrf8SRZYcIeHAkPuo6T69B-wSds9IiaA5FNrknZ8ug5A82tUp8g&mfa_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNWMzNDRkMTZhOGY4OTQ1ZWJlODdkOTZkIiwiZXhwIjoxNTUyNDcxNzk4fQ.1lDGeK04uQs2jSMmuBNEkq-7uVnKBpY5eJUnskLyZO0 - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:16 PM</td>
+					<td class='step-details'>https://mp-api-staging.vivriti.in/transaction_task_documents/5c35bcc1a8f8945ebe87db3a/download?access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5rVkJNVEl6TkVaRFEwTTRRMEpEUkRaRU5FRTNRMEUzUmpReE5VVTJPRU01T1RaR09EazVOQSJ9.eyJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9yb2xlcyI6WyJhZG1pbiJdLCJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9ncm91cHMiOlsiY3VzdG9tZXIiXSwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vZW50aXR5X2lkIjoiNWMzNDRjMWFhOGY4OTQ1ZWJlODdkOTY5IiwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vbG9jYWxfdXNlcl9pZCI6IjVjMzQ0ZDE2YThmODk0NWViZTg3ZDk2ZCIsImlzcyI6Imh0dHBzOi8vdml2cml0aS1tYXJrZXRwbGFjZS1zdGFnaW5nLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1YzM0NGQxOGVjZWJlNzU2MTc4ZTM4YzkiLCJhdWQiOlsiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4iLCJodHRwczovL3ZpdnJpdGktbWFya2V0cGxhY2Utc3RhZ2luZy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTUwMDUyNTg4LCJleHAiOjE1NTAwNTk3ODgsImF6cCI6InRtTmljNmU1YzI5ODFKQ25kRWRvSlJiZDd0WTRCQmhGIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCJ9.I89sqwO4MYd6ACllFbMfdvK38QGMgBnDXVd6EAmW-bgtclFBc0ZZISlMs3ksYrM16e2jHfDqy2rEk16Kb_z2ESAtf4aDb_cIIbgDrXgXSYEGvWXXgISUwHC8Mm01OIAYiDk56PpsriRU-Q_ThkCXyholLMWw0fhD0S9Lc_HJmy3YqDEgat9GRksE58ZMnIixh9ryX27CAPvzVOSbkb4Y5wXSXeX_0c-4HIbKMMF_K0veSMKpOrnHig6nXasMWe6bTYQDPHxM_T6boMr2gY-J9ZGHt25RwvZmc_kZrf8SRZYcIeHAkPuo6T69B-wSds9IiaA5FNrknZ8ug5A82tUp8g&mfa_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNWMzNDRkMTZhOGY4OTQ1ZWJlODdkOTZkIiwiZXhwIjoxNTUyNDcxNzk4fQ.1lDGeK04uQs2jSMmuBNEkq-7uVnKBpY5eJUnskLyZO0 - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:17 PM</td>
+					<td class='step-details'>https://mp-api-staging.vivriti.in/transaction_task_documents/5c35bcc8a8f8945ebe87db3d/download?access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5rVkJNVEl6TkVaRFEwTTRRMEpEUkRaRU5FRTNRMEUzUmpReE5VVTJPRU01T1RaR09EazVOQSJ9.eyJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9yb2xlcyI6WyJhZG1pbiJdLCJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9ncm91cHMiOlsiY3VzdG9tZXIiXSwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vZW50aXR5X2lkIjoiNWMzNDRjMWFhOGY4OTQ1ZWJlODdkOTY5IiwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vbG9jYWxfdXNlcl9pZCI6IjVjMzQ0ZDE2YThmODk0NWViZTg3ZDk2ZCIsImlzcyI6Imh0dHBzOi8vdml2cml0aS1tYXJrZXRwbGFjZS1zdGFnaW5nLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1YzM0NGQxOGVjZWJlNzU2MTc4ZTM4YzkiLCJhdWQiOlsiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4iLCJodHRwczovL3ZpdnJpdGktbWFya2V0cGxhY2Utc3RhZ2luZy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTUwMDUyNTg4LCJleHAiOjE1NTAwNTk3ODgsImF6cCI6InRtTmljNmU1YzI5ODFKQ25kRWRvSlJiZDd0WTRCQmhGIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCJ9.I89sqwO4MYd6ACllFbMfdvK38QGMgBnDXVd6EAmW-bgtclFBc0ZZISlMs3ksYrM16e2jHfDqy2rEk16Kb_z2ESAtf4aDb_cIIbgDrXgXSYEGvWXXgISUwHC8Mm01OIAYiDk56PpsriRU-Q_ThkCXyholLMWw0fhD0S9Lc_HJmy3YqDEgat9GRksE58ZMnIixh9ryX27CAPvzVOSbkb4Y5wXSXeX_0c-4HIbKMMF_K0veSMKpOrnHig6nXasMWe6bTYQDPHxM_T6boMr2gY-J9ZGHt25RwvZmc_kZrf8SRZYcIeHAkPuo6T69B-wSds9IiaA5FNrknZ8ug5A82tUp8g&mfa_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNWMzNDRkMTZhOGY4OTQ1ZWJlODdkOTZkIiwiZXhwIjoxNTUyNDcxNzk4fQ.1lDGeK04uQs2jSMmuBNEkq-7uVnKBpY5eJUnskLyZO0 - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:19 PM</td>
+					<td class='step-details'>https://mp-api-staging.vivriti.in/transaction_task_documents/5c35bcdba8f8945ebe87db45/download?access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5rVkJNVEl6TkVaRFEwTTRRMEpEUkRaRU5FRTNRMEUzUmpReE5VVTJPRU01T1RaR09EazVOQSJ9.eyJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9yb2xlcyI6WyJhZG1pbiJdLCJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9ncm91cHMiOlsiY3VzdG9tZXIiXSwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vZW50aXR5X2lkIjoiNWMzNDRjMWFhOGY4OTQ1ZWJlODdkOTY5IiwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vbG9jYWxfdXNlcl9pZCI6IjVjMzQ0ZDE2YThmODk0NWViZTg3ZDk2ZCIsImlzcyI6Imh0dHBzOi8vdml2cml0aS1tYXJrZXRwbGFjZS1zdGFnaW5nLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1YzM0NGQxOGVjZWJlNzU2MTc4ZTM4YzkiLCJhdWQiOlsiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4iLCJodHRwczovL3ZpdnJpdGktbWFya2V0cGxhY2Utc3RhZ2luZy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTUwMDUyNTg4LCJleHAiOjE1NTAwNTk3ODgsImF6cCI6InRtTmljNmU1YzI5ODFKQ25kRWRvSlJiZDd0WTRCQmhGIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCJ9.I89sqwO4MYd6ACllFbMfdvK38QGMgBnDXVd6EAmW-bgtclFBc0ZZISlMs3ksYrM16e2jHfDqy2rEk16Kb_z2ESAtf4aDb_cIIbgDrXgXSYEGvWXXgISUwHC8Mm01OIAYiDk56PpsriRU-Q_ThkCXyholLMWw0fhD0S9Lc_HJmy3YqDEgat9GRksE58ZMnIixh9ryX27CAPvzVOSbkb4Y5wXSXeX_0c-4HIbKMMF_K0veSMKpOrnHig6nXasMWe6bTYQDPHxM_T6boMr2gY-J9ZGHt25RwvZmc_kZrf8SRZYcIeHAkPuo6T69B-wSds9IiaA5FNrknZ8ug5A82tUp8g&mfa_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNWMzNDRkMTZhOGY4OTQ1ZWJlODdkOTZkIiwiZXhwIjoxNTUyNDcxNzk4fQ.1lDGeK04uQs2jSMmuBNEkq-7uVnKBpY5eJUnskLyZO0 - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:20 PM</td>
+					<td class='step-details'>https://mp-api-staging.vivriti.in/transaction_task_documents/5c35bcd5a8f8945ebe87db42/download?access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5rVkJNVEl6TkVaRFEwTTRRMEpEUkRaRU5FRTNRMEUzUmpReE5VVTJPRU01T1RaR09EazVOQSJ9.eyJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9yb2xlcyI6WyJhZG1pbiJdLCJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9ncm91cHMiOlsiY3VzdG9tZXIiXSwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vZW50aXR5X2lkIjoiNWMzNDRjMWFhOGY4OTQ1ZWJlODdkOTY5IiwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vbG9jYWxfdXNlcl9pZCI6IjVjMzQ0ZDE2YThmODk0NWViZTg3ZDk2ZCIsImlzcyI6Imh0dHBzOi8vdml2cml0aS1tYXJrZXRwbGFjZS1zdGFnaW5nLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1YzM0NGQxOGVjZWJlNzU2MTc4ZTM4YzkiLCJhdWQiOlsiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4iLCJodHRwczovL3ZpdnJpdGktbWFya2V0cGxhY2Utc3RhZ2luZy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTUwMDUyNTg4LCJleHAiOjE1NTAwNTk3ODgsImF6cCI6InRtTmljNmU1YzI5ODFKQ25kRWRvSlJiZDd0WTRCQmhGIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCJ9.I89sqwO4MYd6ACllFbMfdvK38QGMgBnDXVd6EAmW-bgtclFBc0ZZISlMs3ksYrM16e2jHfDqy2rEk16Kb_z2ESAtf4aDb_cIIbgDrXgXSYEGvWXXgISUwHC8Mm01OIAYiDk56PpsriRU-Q_ThkCXyholLMWw0fhD0S9Lc_HJmy3YqDEgat9GRksE58ZMnIixh9ryX27CAPvzVOSbkb4Y5wXSXeX_0c-4HIbKMMF_K0veSMKpOrnHig6nXasMWe6bTYQDPHxM_T6boMr2gY-J9ZGHt25RwvZmc_kZrf8SRZYcIeHAkPuo6T69B-wSds9IiaA5FNrknZ8ug5A82tUp8g&mfa_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNWMzNDRkMTZhOGY4OTQ1ZWJlODdkOTZkIiwiZXhwIjoxNTUyNDcxNzk4fQ.1lDGeK04uQs2jSMmuBNEkq-7uVnKBpY5eJUnskLyZO0 - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:21 PM</td>
+					<td class='step-details'>https://mp-api-staging.vivriti.in/transaction_task_documents/5c35bcd4a8f8945ebe87db40/download?access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5rVkJNVEl6TkVaRFEwTTRRMEpEUkRaRU5FRTNRMEUzUmpReE5VVTJPRU01T1RaR09EazVOQSJ9.eyJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9yb2xlcyI6WyJhZG1pbiJdLCJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9ncm91cHMiOlsiY3VzdG9tZXIiXSwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vZW50aXR5X2lkIjoiNWMzNDRjMWFhOGY4OTQ1ZWJlODdkOTY5IiwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vbG9jYWxfdXNlcl9pZCI6IjVjMzQ0ZDE2YThmODk0NWViZTg3ZDk2ZCIsImlzcyI6Imh0dHBzOi8vdml2cml0aS1tYXJrZXRwbGFjZS1zdGFnaW5nLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1YzM0NGQxOGVjZWJlNzU2MTc4ZTM4YzkiLCJhdWQiOlsiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4iLCJodHRwczovL3ZpdnJpdGktbWFya2V0cGxhY2Utc3RhZ2luZy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTUwMDUyNTg4LCJleHAiOjE1NTAwNTk3ODgsImF6cCI6InRtTmljNmU1YzI5ODFKQ25kRWRvSlJiZDd0WTRCQmhGIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCJ9.I89sqwO4MYd6ACllFbMfdvK38QGMgBnDXVd6EAmW-bgtclFBc0ZZISlMs3ksYrM16e2jHfDqy2rEk16Kb_z2ESAtf4aDb_cIIbgDrXgXSYEGvWXXgISUwHC8Mm01OIAYiDk56PpsriRU-Q_ThkCXyholLMWw0fhD0S9Lc_HJmy3YqDEgat9GRksE58ZMnIixh9ryX27CAPvzVOSbkb4Y5wXSXeX_0c-4HIbKMMF_K0veSMKpOrnHig6nXasMWe6bTYQDPHxM_T6boMr2gY-J9ZGHt25RwvZmc_kZrf8SRZYcIeHAkPuo6T69B-wSds9IiaA5FNrknZ8ug5A82tUp8g&mfa_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNWMzNDRkMTZhOGY4OTQ1ZWJlODdkOTZkIiwiZXhwIjoxNTUyNDcxNzk4fQ.1lDGeK04uQs2jSMmuBNEkq-7uVnKBpY5eJUnskLyZO0 - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:22 PM</td>
+					<td class='step-details'>https://mp-api-staging.vivriti.in/transaction_task_documents/5c35bd1ba8f8945ebe87db53/download?access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5rVkJNVEl6TkVaRFEwTTRRMEpEUkRaRU5FRTNRMEUzUmpReE5VVTJPRU01T1RaR09EazVOQSJ9.eyJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9yb2xlcyI6WyJhZG1pbiJdLCJodHRwczovL21wLWFwaS1zdGcudml2cml0aS5pbi9ncm91cHMiOlsiY3VzdG9tZXIiXSwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vZW50aXR5X2lkIjoiNWMzNDRjMWFhOGY4OTQ1ZWJlODdkOTY5IiwiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4vbG9jYWxfdXNlcl9pZCI6IjVjMzQ0ZDE2YThmODk0NWViZTg3ZDk2ZCIsImlzcyI6Imh0dHBzOi8vdml2cml0aS1tYXJrZXRwbGFjZS1zdGFnaW5nLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1YzM0NGQxOGVjZWJlNzU2MTc4ZTM4YzkiLCJhdWQiOlsiaHR0cHM6Ly9tcC1hcGktc3RnLnZpdnJpdGkuaW4iLCJodHRwczovL3ZpdnJpdGktbWFya2V0cGxhY2Utc3RhZ2luZy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTUwMDUyNTg4LCJleHAiOjE1NTAwNTk3ODgsImF6cCI6InRtTmljNmU1YzI5ODFKQ25kRWRvSlJiZDd0WTRCQmhGIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCJ9.I89sqwO4MYd6ACllFbMfdvK38QGMgBnDXVd6EAmW-bgtclFBc0ZZISlMs3ksYrM16e2jHfDqy2rEk16Kb_z2ESAtf4aDb_cIIbgDrXgXSYEGvWXXgISUwHC8Mm01OIAYiDk56PpsriRU-Q_ThkCXyholLMWw0fhD0S9Lc_HJmy3YqDEgat9GRksE58ZMnIixh9ryX27CAPvzVOSbkb4Y5wXSXeX_0c-4HIbKMMF_K0veSMKpOrnHig6nXasMWe6bTYQDPHxM_T6boMr2gY-J9ZGHt25RwvZmc_kZrf8SRZYcIeHAkPuo6T69B-wSds9IiaA5FNrknZ8ug5A82tUp8g&mfa_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNWMzNDRkMTZhOGY4OTQ1ZWJlODdkOTZkIiwiZXhwIjoxNTUyNDcxNzk4fQ.1lDGeK04uQs2jSMmuBNEkq-7uVnKBpY5eJUnskLyZO0 - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:23 PM</td>
+					<td class='step-details'>https://www.vivriticapital.com/terms-conditions.html - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:23 PM</td>
+					<td class='step-details'>sun.net.www.protocol.mailto.MailToURLConnection cannot be cast to java.net.HttpURLConnection</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:23 PM</td>
+					<td class='step-details'>sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:23 PM</td>
+					<td class='step-details'>https://twitter.com/VivritiCapital - OK</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:24 PM</td>
+					<td class='step-details'>The Element  Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:24 PM</td>
+					<td class='step-details'>The Element Logout Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:25 PM</td>
+					<td class='step-details'>The browser is closed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='9'>
+					<div class='test-heading'>
+						<span class='test-name'>MP IE testing</span>
+						<span class='test-time'>Feb 13, 2019 03:40:25 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 13, 2019 03:40:25 PM</span>
+	<span class='label end-time'>Feb 13, 2019 03:40:25 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>MP Staging Login </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Sanity</span>
+			</div>
+			<div class='author-list'>
+				<span class='author label white-text'>Manoj</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:57 PM</td>
+					<td class='step-details'>The Browser ie32 Launched Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:58 PM</td>
+					<td class='step-details'>The data product_admin@vivriticapital.com is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:40:59 PM</td>
+					<td class='step-details'>The data Think@123 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:01 PM</td>
+					<td class='step-details'>The Element LOGIN Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:08 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:08 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:09 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:09 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:09 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:09 PM</td>
+					<td class='step-details'>The data 9 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:11 PM</td>
+					<td class='step-details'>The Element VERIFY Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:16 PM</td>
+					<td class='step-details'>The Element  Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:17 PM</td>
+					<td class='step-details'>The Element Logout Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:17 PM</td>
+					<td class='step-details'>The browser is closed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='10'>
+					<div class='test-heading'>
+						<span class='test-name'>CRA IE testing</span>
+						<span class='test-time'>Feb 13, 2019 03:41:17 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 13, 2019 03:41:17 PM</span>
+	<span class='label end-time'>Feb 13, 2019 03:41:17 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>CRA Staging Login </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Sanity</span>
+			</div>
+			<div class='author-list'>
+				<span class='author label white-text'>Manoj</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:30 PM</td>
+					<td class='step-details'>The Browser ie32 Launched Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:30 PM</td>
+					<td class='step-details'>Retrieved text is: Expand your horizons with Vivriti Capital.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:30 PM</td>
+					<td class='step-details'>Found header as: Expand your horizons with Vivriti Capital. So page loaded successfully in IE browser</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:31 PM</td>
+					<td class='step-details'>The data Fresh Capital is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:32 PM</td>
+					<td class='step-details'>The data U11101UP1995PTC018264 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:32 PM</td>
+					<td class='step-details'>The data Paul Walker is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:33 PM</td>
+					<td class='step-details'>The DropDown is Selected with VisibleText: Manager</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:34 PM</td>
+					<td class='step-details'>The data 9865410292 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:35 PM</td>
+					<td class='step-details'>The data manojve@gmail.com is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:35 PM</td>
+					<td class='step-details'>The data Jack is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:36 PM</td>
+					<td class='step-details'>The data 3 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:36 PM</td>
+					<td class='step-details'>The data 2 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:38 PM</td>
+					<td class='step-details'>The data Grant Thorton is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:39 PM</td>
+					<td class='step-details'>The DropDown is Selected with VisibleText: Capital Goods</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:40 PM</td>
+					<td class='step-details'>The data Machineries is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:41 PM</td>
+					<td class='step-details'>The DropDown is Selected with VisibleText: 3</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:42 PM</td>
+					<td class='step-details'>The data 3 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:42 PM</td>
+					<td class='step-details'>The data 4 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:43 PM</td>
+					<td class='step-details'>The data 3 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:44 PM</td>
+					<td class='step-details'>The data 4 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:45 PM</td>
+					<td class='step-details'>The data 3 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:46 PM</td>
+					<td class='step-details'>The data 4 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:47 PM</td>
+					<td class='step-details'>The data 1 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:48 PM</td>
+					<td class='step-details'>The data 2 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:49 PM</td>
+					<td class='step-details'>The data 1 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:50 PM</td>
+					<td class='step-details'>The data 2 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:52 PM</td>
+					<td class='step-details'>The Element  Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:53 PM</td>
+					<td class='step-details'>The Element  Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:53 PM</td>
+					<td class='step-details'>The data 8 is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:54 PM</td>
+					<td class='step-details'>The DropDown is Selected with VisibleText: Yes</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:55 PM</td>
+					<td class='step-details'>The data McDonalds is Entered Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:55 PM</td>
+					<td class='step-details'>The DropDown is Selected with VisibleText: Vivriti Capital client referral</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:56 PM</td>
+					<td class='step-details'>The Element  Clicked Successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:41:56 PM</td>
+					<td class='step-details'>The browser is closed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- subview left -->
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='test-name'></h5>
+
+			<div id='step-filters' class="right">
+				<span class="blue-text" status="info" alt="info" title="info"><i class="material-icons">info_outline</i></span>
+				<span class="green-text" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></span>
+				<span class="red-text" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></span>
+				<span class="red-text text-darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></span>
+				<span class="pink-text text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></span>
+				<span class="orange-text" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></span>
+				<span class="teal-text" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></span>
+				<span status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></span>
+			</div>
+		</div>
+	</div>
+	<!-- subview right -->
+
+</div>
+<!-- test view -->
+<div id='category-view' class='view hide'>
+
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+				
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Categories</h3>
+			<ul id='category-collection' class='category-collection'>
+				
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>Sanity</span>
+						<span class='category-status right'>
+							<span class='label pass'>10</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 10</span>
+							
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Feb 13, 2019 03:33:58 PM</td>
+										<td class='linked' test-id='1'>Term Loan</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Feb 13, 2019 03:34:44 PM</td>
+										<td class='linked' test-id='2'>Pass Through Certificates</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Feb 13, 2019 03:35:27 PM</td>
+										<td class='linked' test-id='3'>Direct Assignment</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Feb 13, 2019 03:36:59 PM</td>
+										<td class='linked' test-id='4'>Forgot Password</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Feb 13, 2019 03:37:54 PM</td>
+										<td class='linked' test-id='5'>MFA OTP testing</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Feb 13, 2019 03:38:38 PM</td>
+										<td class='linked' test-id='6'>File Download Testing</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Feb 13, 2019 03:39:07 PM</td>
+										<td class='linked' test-id='7'>Investor Transaction page</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Feb 13, 2019 03:39:37 PM</td>
+										<td class='linked' test-id='8'>Client Transaction page</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Feb 13, 2019 03:40:25 PM</td>
+										<td class='linked' test-id='9'>MP IE testing</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Feb 13, 2019 03:41:17 PM</td>
+										<td class='linked' test-id='10'>CRA IE testing</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='category-name'></h5>
+		</div>
+	</div>
+</div>
+<!-- category view -->
+<div id='author-view' class='view hide'>
+    <section id='controls'>
+        <div class='controls grey lighten-4'>
+            <!-- search -->
+            <div class='chip transparent' alt='Search Authors' title='Search Authors'>
+                <a href="#" class='search-div'>
+                    <i class='material-icons'>search</i> Search
+                </a>
+
+                <div class='input-field left hide'>
+                    <input id='search-tests' type='text' class='validate browser-default' placeholder='Search Authors...'>
+                </div>
+
+            </div>
+            <!-- search -->
+        </div>
+    </section>
+
+    <div class='subview-left left'>
+
+        <div class='view-summary'>
+            <h5>Authors</h5>
+                <ul id='author-collection' class='author-collection'>
+
+                        <li class='author displayed active'>
+                            <div class='author-heading'>
+                                <span class='author-name'>Manoj</span>
+                                <span class='author-status right'>
+                                        <span class='label pass'>10</span>
+						        </span>
+                            </div>
+                            <div class='author-content hide'>
+                                <div class='author-status-counts'>
+                                    <span class='label green accent-4 white-text'>Passed: 10</span>
+                                    
+                                    
+                                </div>
+
+                                <div class='author-tests'>
+                                    <table class='bordered table-results'>
+                                        <thead>
+                                        <tr>
+                                            <th>Timestamp</th>
+                                            <th>TestName</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Feb 13, 2019 03:33:58 PM</td>
+                                                <td class='linked' test-id='1'>Term Loan</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Feb 13, 2019 03:34:44 PM</td>
+                                                <td class='linked' test-id='2'>Pass Through Certificates</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Feb 13, 2019 03:35:27 PM</td>
+                                                <td class='linked' test-id='3'>Direct Assignment</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Feb 13, 2019 03:36:59 PM</td>
+                                                <td class='linked' test-id='4'>Forgot Password</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Feb 13, 2019 03:37:54 PM</td>
+                                                <td class='linked' test-id='5'>MFA OTP testing</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Feb 13, 2019 03:38:38 PM</td>
+                                                <td class='linked' test-id='6'>File Download Testing</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Feb 13, 2019 03:39:07 PM</td>
+                                                <td class='linked' test-id='7'>Investor Transaction page</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Feb 13, 2019 03:39:37 PM</td>
+                                                <td class='linked' test-id='8'>Client Transaction page</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Feb 13, 2019 03:40:25 PM</td>
+                                                <td class='linked' test-id='9'>MP IE testing</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Feb 13, 2019 03:41:17 PM</td>
+                                                <td class='linked' test-id='10'>CRA IE testing</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </li>
+
+                </ul>
+        </div>
+    </div>
+
+    <div class='subview-right left'>
+        <div class='view-summary'>
+            <h5 class='author-name'></h5>
+        </div>
+    </div>
+</div>
+<!-- exception view -->
+<div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Tests
+					<div class='panel-lead'>10</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>282</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>Feb 13, 2019 03:33:57 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>Feb 13, 2019 03:41:56 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>0h 7m 59s+632ms</div>
+				</div>
+			</div>
+			<div class='col s6'>
+				<div class='card-panel dashboard-categories'>
+					<span class='right label cyan white-text'>Categories</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Passed</th>
+							<th>Failed</th>
+							<th>Others</th>
+							<th>Passed %</th>
+						</tr>
+						<tr>
+							<td>Sanity</td>
+							<td>10</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view -->
+<!-- testrunner-logs view -->
+		</div>
+		<!-- container -->
+
+		<script>
+			var statusGroup = {
+				passParent: 10,
+				failParent: 0,
+				fatalParent: 0,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 0,
+				exceptionsParent: 0,
+				
+				passChild: 282,
+				failChild: 0,
+				fatalChild: 0,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 0,
+				infoChild: 0,
+				exceptionsChild: 0,
+				
+				passGrandChild: 0,
+				failGrandChild: 0,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 0,
+				infoGrandChild: 0,
+				exceptionsGrandChild: 0,
+			};
+		</script>
+		
+			<script src='https://cdn.rawgit.com/anshooarora/extentreports-java/fca20fb7653aade98810546ab96a2a4360e3e712/dist/js/extent.js' type='text/javascript'></script>
+		
+		<script type='text/javascript'>
+			$(document).ready(function() {
+				$('#test-view-charts').addClass('hide');
+			});
+		</script>
+		
+ 		<script type='text/javascript'>
+ 		</script>
+	</body>
+	
+</html>
